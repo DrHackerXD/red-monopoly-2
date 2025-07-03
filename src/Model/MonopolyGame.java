@@ -12,6 +12,7 @@ public class MonopolyGame {
     private Board board;
     private int currentPlayerIndex;
     private Random dice;
+    private int currentTurn = 0;
 
     private MonopolyGame() { 
         players = new ArrayList<>();
@@ -44,6 +45,9 @@ public class MonopolyGame {
 
     public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);
+    }
+    public int getCurrentTurn() {
+        return currentTurn;
     }
 
     public List<Player> getPlayers() {
