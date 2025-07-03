@@ -16,6 +16,9 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import Model.BankService;
+import Model.Player;
+
 
 public class GameWindow extends JFrame {
     // Reuse the same click and menu URLs from MainWindow
@@ -92,6 +95,16 @@ public class GameWindow extends JFrame {
 
         bottom.add(makeButtonCard(createImageButton("/goBack.png",
                 "Leave Game", e -> onLeave())));
+        // Take Loan button
+        JButton takeLoanBtn = createImageButton("/loan.png", "Take a loan from the bank", e -> onTakeLoan());
+        bottom.add(makeButtonCard(takeLoanBtn));
+
+
+// Repay Loan button
+        JButton repayLoanBtn = createImageButton("/repay.png", "Repay your active loan", e -> onRepayLoan());
+        bottom.add(makeButtonCard(repayLoanBtn));
+
+
         bottom.add(makeButtonCard(createImageButton("/playerInfoWindow.png",
                 "Show player info", e -> onPlayerInfo())));
         bottom.add(makeButtonCard(createImageButton("/undo.png",
@@ -119,6 +132,38 @@ public class GameWindow extends JFrame {
         add(top,    BorderLayout.NORTH);
         add(split,  BorderLayout.CENTER);
         add(bottom, BorderLayout.SOUTH);
+    }
+    private void onTakeLoan() {
+        String input = JOptionPane.showInputDialog(this, "Enter loan amount:");
+        if (input == null) return;
+
+        try {
+            double amount = Double.parseDouble(input);
+            Player currentPlayer = _controller.getCurrentPlayer();
+            int currentTurn = _controller.getMonopolyGame().getCurrentTurn(); // Make sure this method exists
+
+            boolean success = BankService.issueLoan(currentPlayer, amount, currentTurn);
+            if (success) {
+                JOptionPane.showMessageDialog(this, "Loan granted: " + amount + " ₽");
+                updateCurrentBalanceLabel();
+            } else {
+                JOptionPane.showMessageDialog(this, "Loan denied. You already have one.");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid amount entered.");
+        }
+    }
+
+    private void onRepayLoan() {
+        Player currentPlayer = _controller.getCurrentPlayer();
+        boolean success = BankService.repayLoan(currentPlayer);
+
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Loan fully repaid!");
+            updateCurrentBalanceLabel();
+        } else {
+            JOptionPane.showMessageDialog(this, "Not enough money or no active loan.");
+        }
     }
 
     private void initMusic() {
