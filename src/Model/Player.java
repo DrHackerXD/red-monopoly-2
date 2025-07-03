@@ -5,11 +5,15 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 public class Player {
-    private String name;
+    private final String name;
     private int position;
     private int money;
+    private Loan activeLoan;
+
     private boolean inJail;
     private int jailTurnCount = 0;
+    private boolean bankrupt = false;
+
 
     /**
      * Stores the classpath resource path for the avatar, e.g. "/players/player3.png"
@@ -33,10 +37,33 @@ public class Player {
         this.money = 1500; // Default starting money
         this.inJail = false;
     }
+    public void sellProperty(PropertyTile property) {
+        if (ownedProperties.contains(property)) {
+            ownedProperties.remove(property);
+            this.money += property.getPrice(); // Adjust if you want a discount
+            property.setOwner(null); // Remove ownership
+        }
+    }
+
 
     public String getName() {
         return name;
     }
+    public Loan getActiveLoan() {
+        return activeLoan;
+    }
+    public int getTotalAssets() {
+        int total = 0;
+
+        for (PropertyTile property : getOwnedProperties()) {
+            total += property.getPrice(); // Adjust if you want to include upgrades too
+        }
+
+        total += getMoney(); // Include cash
+
+        return total;
+    }
+
 
     public int getPosition() {
         return position;
@@ -44,6 +71,9 @@ public class Player {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+    public void setActiveLoan(Loan activeLoan) {
+        this.activeLoan = activeLoan;
     }
 
     public int getMoney() {
@@ -173,6 +203,13 @@ public class Player {
         }
         this.avatarPath = path;
     }
+    public void setBankrupt(boolean bankrupt) {
+        this.bankrupt = bankrupt;
+    }
+    public boolean isBankrupt() {
+        return bankrupt;
+    }
+
 
     @SerializedName("type")
     public String getType() {
