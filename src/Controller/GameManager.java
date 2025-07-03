@@ -1,23 +1,9 @@
 // src/Controller/GameManager.java
 package Controller;
 
+import Model.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import Model.GameState;
-import Model.Tile;
-import Model.GoTile;
-import Model.PropertyTile;
-import Model.ChanceTile;
-import Model.JailTile;
-import Model.GoToJailTile;
-import Model.TaxTile;
-import Model.CommunityChestTile;
-import Model.FreeParkingTile;
-import Model.RailroadTile;
-import Model.UtilityTile;
-import Model.RuntimeTypeAdapterFactory;
-import Model.Player;
-import Model.AIPlayer;
 
 import javax.swing.SwingUtilities;
 import java.util.Map;
@@ -118,6 +104,8 @@ public class GameManager {
         SwingUtilities.invokeLater(() -> {
             int[] dice = controller.rollDice();
             String outcome = controller.movePlayerAfterDiceRoll(dice);
+            BankService.updateLoanEachTurn(idToPlayer.get(playerId));
+
 
             // update all GUI windows
             for (Frame f : Frame.getFrames()) {
