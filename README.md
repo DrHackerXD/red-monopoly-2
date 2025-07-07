@@ -6,11 +6,11 @@ A digital twist on the classic Monopoly board game, set in the USSR. Buy, trade,
 
 ## Table of Contents
 
-1. [User Manual & How to Play](#user-manual--how-to-play)  
-2. [Project Configuration](#project-configuration)  
-3. [Running the Game](#running-the-game)  
-4. [Contributing](#contributing)  
-5. [License](#license)  
+1. [User Manual & How to Play](#user-manual--how-to-play)
+2. [Project Configuration](#project-configuration)
+3. [Running the Game](#running-the-game)
+4. [Contributing](#contributing)
+5. [License](#license)
 
 ---
 
@@ -18,20 +18,20 @@ A digital twist on the classic Monopoly board game, set in the USSR. Buy, trade,
 
 Below you will find the rules and features of Red Monopoly. Jump straight to any section:
 
-- [Start a New Game](#start-a-new-game)  
-- [Character Selection](#character-selection)  
-- [Turn Sequence](#turn-sequence)  
-- [Winning Conditions](#winning-conditions)  
-- [Automatic Player](#automatic-player)  
-- [It Is Not Your Game, It Is OUR Game!](#it-is-not-your-game-it-is-our-game)  
-- [Additional Features](#additional-features)  
+- [Start a New Game](#start-a-new-game)
+- [Character Selection](#character-selection)
+- [Turn Sequence](#turn-sequence)
+- [Winning Conditions](#winning-conditions)
+- [Automatic Player](#automatic-player)
+- [It Is Not Your Game, It Is OUR Game!](#it-is-not-your-game-it-is-our-game)
+- [Additional Features](#additional-features)
 
 ---
 
 ### Start a New Game
 
-1. From the main menu, click **New Game**.  
-2. Choose number of players (2–8) and an avatar per player.  
+1. From the main menu, click **New Game**.
+2. Choose number of players (2–8) and an avatar per player.
 3. Click **OK** to place tokens on Red Square.
 
 **Screenshot**:  
@@ -41,8 +41,8 @@ Below you will find the rules and features of Red Monopoly. Jump straight to any
 
 ### Character Selection
 
-1. After naming your player, you’ll see 8 Soviet-themed avatars.  
-2. Click an avatar to select.  
+1. After naming your player, you’ll see 8 Soviet-themed avatars.
+2. Click an avatar to select.
 3. Click cancel to return to the main menu.
 
 **Screenshot**:  
@@ -52,11 +52,11 @@ Below you will find the rules and features of Red Monopoly. Jump straight to any
 
 ### Turn Sequence
 
-1. **Roll Dice**: Click the **DICE** button.  
-2. **Move Token**: Token advances automatically.  
-3. **Resolve Space**:  
-   - Buy property (if unowned).  
-   - Pay rent (if owned).  
+1. **Roll Dice**: Click the **DICE** button.
+2. **Move Token**: Token advances automatically.
+3. **Resolve Space**:
+   - Buy property (if unowned).
+   - Pay rent (if owned).
    - Draw a **Card** for special events.
    - If a player is Jailed, they cannot move unless they roll 2 dices that are the same value (E.G. 5 and 5). If they do not accomplish this in 3 turns, they will pay a Jail Fee and proceed normally.
 
@@ -67,14 +67,14 @@ Below you will find the rules and features of Red Monopoly. Jump straight to any
 
 ### Winning Conditions
 
-- **Elimination**: Bankrupt all other players.  
+- **Elimination**: Bankrupt all other players.
 
 ---
 
 ### Automatic Player
 
-1. When prompted for a name, type `AI` to add a computer player.  
-2. Set difficulty: `easy`, `medium`, or `hard`.  
+1. When prompted for a name, type `AI` to add a computer player.
+2. Set difficulty: `easy`, `medium`, or `hard`.
 3. The AI will take its turn automatically.
 
 **Screenshot**:  
@@ -84,23 +84,24 @@ Below you will find the rules and features of Red Monopoly. Jump straight to any
 
 ### It Is Not Your Game, It Is OUR Game!
 
-– **Multiplayer Mode**:  
-  - Do you want to play against your friends, or simply want bragging rights? Now you can do that in Red Monopoly with our multiplayer feature!
-  - Host-Client architecture. One player hosts, others join via IP.  
-  - Supports 2–8 players over LAN.
+– **Multiplayer Mode**:
+- Do you want to play against your friends, or simply want bragging rights? Now you can do that in Red Monopoly with our multiplayer feature!
+- Host-Client architecture. One player hosts, others join via IP.
+- Supports 2–8 players over LAN.
 
 ---
 
 ### Additional Features
 
-- **Player Info Box**: Click the icon to view owned properties.
-  
 
-![Player Info Box](docs/screenshots/PlayerInfo.png)  
+- **Player Info Box**: Click the icon to view owned properties.
+
+
+![Player Info Box](docs/screenshots/PlayerInfo.png)
 
 - **Tile Hints**: Hover over any tile for description and price.
 
-![Tile Hints](docs/screenshots/RMMouseOver.png)  
+![Tile Hints](docs/screenshots/RMMouseOver.png)
 
 - **Undo Move**: Click **Undo** to revert your last action.
 
@@ -110,23 +111,23 @@ Below you will find the rules and features of Red Monopoly. Jump straight to any
 
 ## Project Configuration
 
-1. **Prerequisites**  
-   - Java 17 or higher  
-   - Maven 3.x  
-   - Git  
+1. **Prerequisites**
+   - Java 17 or higher
+   - Maven 3.x
+   - Git
 
-2. **Clone the repository**  
+2. **Clone the repository**
    ```bash
    git clone https://github.com/SwEng-UCM/red-monopoly.git
    cd red-monopoly
    ```
 
-3. **Import into IntelliJ IDEA**  
-   - Open IntelliJ IDEA and choose **File → Open…**  
-   - Select the project’s root folder.  
+3. **Import into IntelliJ IDEA**
+   - Open IntelliJ IDEA and choose **File → Open…**
+   - Select the project’s root folder.
    - IntelliJ will detect the Maven project and download dependencies.
 
-4. **Build the JAR**  
+4. **Build the JAR**
    ```bash
    mvn clean package
    ```  
@@ -134,21 +135,59 @@ Below you will find the rules and features of Red Monopoly. Jump straight to any
    ```
    target/monopoly-soviet.jar
    ```
+-------------------------------------------- 
+## 🔥 Loan System Feature (NEW)
 
+Added in **July 2025** by Adam Ankoud, this feature introduces a full **Mortgage & Bank-Loan system** into Red Monopoly. Players can now take and repay loans during the game, with interest tracked per turn.
+
+### 📌 How It Works
+
+#### 1. Take a Loan
+- Click the **"Take Loan"** button in the sidebar.
+  ![takeLoan Button](docs/screenshots/takeloan.png)
+- Enter the loan amount (up to a limit).
+  ![Loan amount](docs/screenshots/loanamount.png)
+- Loan is instantly deposited into the player’s balance.
+- A **10% annual interest rate** applies, calculated linearly per turn.
+
+#### 2. Repay Loan
+- Click the **"Repay Loan"** button to clear your debt.
+  ![repay button](docs/screenshots/repay.png)
+- You must have enough funds to repay both principal and accrued interest.
+
+#### 3. Missed Repayment / Foreclosure
+- If your assets can't cover the debt after multiple turns:
+   - The bank may **automatically sell your properties**.
+   - If that fails, you're declared **bankrupt**.
+
+#### 🏦 Internal Logic
+
+- Implemented via `BankService`, `Loan`, and new logic inside `Player`.
+- Integrated into turn progression via `GameManager`.
+
+### 💡 Design Notes
+
+- Complies with MVC pattern
+- All business logic centralized in `BankService`
+- User interface updated via `GameWindow.java`
+
+---
+
+## Project Configuration
 ---
 
 ## Running the Game
 
 ### A. From IntelliJ IDEA
 
-1. In the **src** view, open `src/Launcher/Main.java` (or your main class).  
+1. In the **src** view, open `src/Launcher/Main.java` (or your main class).
 2. Click the green ▶️ run icon next to the `main` method. No launch parameters needed.
 3. The game will start (GUI or embedded web server, depending on your setup).
 
 ### B. From the Command Line
 
-1. Install a Java Runtime Environment (JRE), with its latest version. 
-2. Ensure you’ve built or possess the JAR file (`red-monopoly.jar`).  
+1. Install a Java Runtime Environment (JRE), with its latest version.
+2. Ensure you’ve built or possess the JAR file (`red-monopoly.jar`).
 3. Run:
    ```bash
    java -jar red-monopoly.jar
@@ -161,12 +200,12 @@ Below you will find the rules and features of Red Monopoly. Jump straight to any
 
 We welcome contributions! Please:
 
-1. **Fork** the repo.  
+1. **Fork** the repo.
 2. **Create a branch**:
    ```bash
    git checkout -b feature/YourFeatureName
    ```
-3. **Make your changes**, following the existing code style.  
+3. **Make your changes**, following the existing code style.
 4. **Commit** your work:
    ```bash
    git commit -m "Add feature: YourFeatureName"
@@ -175,7 +214,7 @@ We welcome contributions! Please:
    ```bash
    git push origin feature/YourFeatureName
    ```
-6. Open a **Pull Request** against `main`.  
+6. Open a **Pull Request** against `main`.
 
 Please ensure your code builds (`mvn clean package`) and, if applicable, add or update tests.
 
@@ -184,3 +223,5 @@ Please ensure your code builds (`mvn clean package`) and, if applicable, add or 
 ## License
 
 This project is licensed under the **MIT License**. See [LICENSE.md](LICENSE) for full details.
+This project is distributed under the original license of the Red Monopoly project.
+All added loan-related code (BankService, Loan.java, UI logic) was developed by Adam Ankoud.
